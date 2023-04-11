@@ -41,6 +41,15 @@ public class PostDaoRepository {
 		return list;
 	}
 	
+	// busca uma determinado quantidade de registros
+	public List<Post> findMaxResult(int quantidade){
+		// Criamos uma consulta HQL(Hibernate Query Linguage) e retornamos a lista dos registros
+		List<Post> list = entityManager.createQuery("select p from Post p")
+													.setMaxResults(quantidade) // definimos o máximo de resultados
+													.getResultList(); // obtemos a lista
+		return list;
+	}
+	
 	// atualiza post
 	public void update(Post post) {
 		entityManager.getTransaction().begin(); // abrimos a transação
