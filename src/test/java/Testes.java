@@ -1,3 +1,5 @@
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import database.ConnectionFactory;
@@ -26,6 +28,14 @@ public class Testes {
 	public void buscarPostPorId() {
 		Post post = new PostDaoRepository().findPostById(2);
 		System.out.println(post.toString());
+	}
+	
+	@Test
+	public void listarTudo() {
+		List<Post> lista = new PostDaoRepository().findAll();
+		lista.forEach(post -> {
+			System.out.println(post.toString());
+		});
 	}
 	
 	@Test

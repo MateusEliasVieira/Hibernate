@@ -1,7 +1,10 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 
 import database.ConnectionFactory;
 import entities.Post;
@@ -29,6 +32,13 @@ public class PostDaoRepository {
 	// buscar post por id
 	public Post findPostById(int id) {
 		return entityManager.find(Post.class, id); // buscamos o registro passando a classe e o id
+	}
+	
+	// busca todos os registros
+	public List<Post> findAll(){
+		// Criamos uma consulta HQL(Hibernate Query Linguage) e retornamos a lista dos registros
+		List<Post> list = entityManager.createQuery("select p from Post p").getResultList();
+		return list;
 	}
 	
 	// atualiza post
