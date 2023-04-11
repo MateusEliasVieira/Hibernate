@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="AprendendoHibernateComJDevTreinamento" transaction-type="RESOURCE_LOCAL">
+		
+		<!-- Definimos o provedor da persistencia -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		
+		<!-- Definimos as entidades do projeto -->
+		<class>entities.Post</class>
+		
+		<properties>
+		
+			<!-- Se for trabalhar apenas com Hibernate -->
+		    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dbhibernate"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="ifhonese"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            
+            <!-- Se for trabalhar com JPA e Hibernate -->
+		<!--  
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mydb" />
+            <property name="javax.persistence.jdbc.user" value="myuser" />
+            <property name="javax.persistence.jdbc.password" value="mypassword" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.show_sql" value="true" />
+         -->
+         
+         <!-- Explicação -->
+         <!-- 
+	        Não há problema algum em utilizar apenas o Hibernate sem o JPA, 
+	        nesse caso as propriedades que você irá utilizar serão apenas as 
+	        específicas do Hibernate, que começam com "hibernate".
+
+			Ao contrário do JPA, que é uma especificação que define uma interface 
+			padrão para persistência de dados em Java, o Hibernate é um framework 
+			de persistência de dados que implementa a especificação do JPA e fornece 
+			recursos adicionais.
+
+			Então, se você está utilizando apenas o Hibernate sem o JPA, 
+			as propriedades que você irá utilizar serão específicas do Hibernate 
+			e não há necessidade de utilizar o prefixo "javax.persistence".
+          -->
+		</properties>
+		
+	</persistence-unit>
+	
+</persistence>
